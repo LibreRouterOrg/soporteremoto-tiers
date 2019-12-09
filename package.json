@@ -1,0 +1,23 @@
+{
+  "name": "soporteremoto-tiers",
+  "version": "1.0.0",
+  "description": "Soporte Remoto global endpoints",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LibreRouterOrg/soporteremoto-tiers.git"
+  },
+  "keywords": [
+    "soporteremoto",
+    "librerouter"
+  ],
+  "author": "AlterMundi ",
+  "license": " AGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/LibreRouterOrg/soporteremoto-tiers/issues"
+  },
+  "homepage": "https://github.com/LibreRouterOrg/soporteremoto-tiers#readme"
+}
