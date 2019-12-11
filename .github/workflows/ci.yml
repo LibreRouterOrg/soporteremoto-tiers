@@ -1,0 +1,11 @@
+name: SoporteRemoto Tiers
+on: [push]
+
+jobs:
+  build:
+    name: CA
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run Jest
+        uses: stefanoeb/jest-action@1.0.0
+
