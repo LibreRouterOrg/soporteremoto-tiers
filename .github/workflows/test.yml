@@ -1,4 +1,4 @@
-name: Jest Test
+name: Tests
 on: [push]
 
 jobs:
@@ -14,4 +14,3 @@ jobs:
           NODE_ENV: test
         with:
           args:  --coverage --runInBand --silent
-
