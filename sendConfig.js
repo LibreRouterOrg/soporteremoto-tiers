@@ -1,7 +1,7 @@
 const fetch = require('node-fetch')
 
 module.exports = (config) => 
-        fetch(process.env.BOT_URL, {
+        fetch(process.env.LNET6_BOT_URL, {
             method: 'POST',
             body: JSON.stringify({
                 communityName: config.communityName,
