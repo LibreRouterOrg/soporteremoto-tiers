@@ -3,7 +3,7 @@ const express = require('express')
 const Server = express()
 const log = require('fancy-log')
 const logSymbols = require('log-symbols')
-const app = require('./src/app')
+const { app } = require('./src/app')
 
 const port = process.env.PORT || 3000
 

@@ -1,9 +1,27 @@
 const express = require('express')
 const app = express()
 const logSymbols = require('log-symbols')
-const log = require('fancy-log')
+let log = require('fancy-log')
 const db = require('./db')
 const addToLibreNet6 = require('./addToLibreNet6')
+
+if(process.env.NODE_ENV === 'test') {
+    log = console
+}
+
+const handlePut = (req, res) => (err)=> {
+    if (err) {
+        log.warn(logSymbols.warning, 'Error saving data to '+ req.body.apiKey)
+        res.json({ error: 'The configuration could not be saved' })
+        return
+    }
+    log.info(logSymbols.success, 'New config saved: '+ req.body.apiKey)
+    addToLibreNet6(req.body.config)
+        .then((ln6)=>{
+            res.json({ status: 200, librenet6: ln6})
+        })
+        .catch(err => res.json({ status: 200, librenet6: { error: err }}))
+}
 
 app.use(express.json())
 
@@ -34,21 +52,12 @@ app.post('/submit', (req, res)=> {
             res.json({ error: 'Api key is already used', id: value.id })
             return
         }
-        db.put(req.body.apiKey, JSON.stringify(req.body.config), (err)=> {
-            if (err) {
-                log.warn(logSymbols.warning, 'Error saving data to '+ req.body.apiKey)
-                res.json({ error: 'The configuration could not be saved' })
-                return
-            }
-            log.info(logSymbols.success, 'New config saved: '+ req.body.apiKey)
-            addToLibreNet6(req.body.config)
-                .then((res)=>{
-                    res.json({ status: 200, librenet6: res})
-                })
-                .catch(err => res.json({ status: 200, librenet6: err}))
 
-        })
+        db.put(req.body.apiKey, JSON.stringify(req.body.config), handlePut(req,res))
     })
 })
 
-module.exports = app
+module.exports = {
+    app,
+    handlePut
+}
