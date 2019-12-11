@@ -1,5 +1,5 @@
 require('dotenv').config()
-const db = require('../db')
+const db = require('../src/db')
 const log = require('fancy-log')
 const logSymbols = require('log-symbols')
 const readline = require('readline')

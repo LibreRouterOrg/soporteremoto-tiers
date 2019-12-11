@@ -1,5 +1,5 @@
 require('dotenv').config()
-const db = require('../db')
+const db = require('../src/db')
 const logSymbols = require('log-symbols')
 const generatePassword = require("password-generator")
 

@@ -2,8 +2,8 @@ const express = require('express')
 const app = express()
 const logSymbols = require('log-symbols')
 const log = require('fancy-log')
-const db = require('../db')
-const addToLibreNet6 = require('../sendConfig')
+const db = require('./db')
+const addToLibreNet6 = require('./addToLibreNet6')
 
 app.use(express.json())
 
