@@ -19,4 +19,4 @@ This app uses dotenv to load the configuration, which can also be set by environ
 
 - __DB__ database name
 - __PORT__ port where the server starts
-- __BOT_URL__ remote support bot url (in charge of adding the pubKey to librenet6)
+- __LNET6_BOT_URL__ remote support bot url (in charge of adding the pubKey to librenet6)
