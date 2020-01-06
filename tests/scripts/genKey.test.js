@@ -1,5 +1,5 @@
 const db = require('../../src/db')
-const { generateRandomKey, handlePut} = require('../../scripts/genKey')
+const { generateRandomKey } = require('../../scripts/genKey')
 
 beforeAll(done => {
     db.clear(done)
@@ -29,9 +29,13 @@ describe('Key generation script', ()=> {
     })
 
     it('should return an error if something fails', (done) => {
-        handlePut('testkey',(data)=>{
-            expect(data).toEqual(new Error('Error when saving to db'))
+        db.put = (key, value, cb) => { 
+            cb(new Error('Error when saving to db'))
+        }
+        
+        generateRandomKey(error =>{
+            expect(error).toEqual(new Error('Error when saving to db'))
             done()
-        })(new Error('Error when saving to db'))
+        })
     })
 })
