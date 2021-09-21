@@ -43,7 +43,7 @@
     "node-fetch": "^2.6.0",
     "node-forge": "^0.9.1",
     "password-generator": "^2.2.3",
-    "ssh2": "^0.8.7"
+    "ssh2": "^1.4.0"
   },
   "devDependencies": {
     "cross-env": "^6.0.3",
